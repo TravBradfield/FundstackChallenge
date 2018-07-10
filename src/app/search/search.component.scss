@@ -268,8 +268,20 @@ body {
       font-size: 3rem;
     }
   }
+
+  .form-control[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
   
   .floating-label-form-group {
+    position: relative;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .search-results{
     position: relative;
     border-bottom: 1px solid #e9ecef;
   }
@@ -380,5 +392,10 @@ body {
   .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
     background-color: #1a252f;
     border-color: #1a252f;
+  }
+
+  .custom-button {
+    background-color: #0F2355;
+    border-color: #2C3E50;
   }
   

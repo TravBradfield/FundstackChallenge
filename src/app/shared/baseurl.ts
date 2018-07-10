@@ -1,0 +1,1 @@
+export const baseURL = 'http://autocomplete.clearbit.com/v1/companies/suggest?query=:';

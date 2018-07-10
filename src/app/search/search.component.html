@@ -1,0 +1,104 @@
+<body id="page-top">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Fundstack Challenge</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#search">Search</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#myCompanies">My Companies</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <!-- Header -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container">
+      <h1 class="mb-0">Company Search</h1>
+      <br />
+      <h2 class="font-weight-light mb-0">Start searching for a company!</h2>
+      <p class="font-weight-light mb-0">Select the companies from the drop-down list to add them to "My Companies"</p>
+    </div>
+    <br/>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <form name="sentMessage" id="contactForm">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-1 pb-1">
+                <input                        
+                       class="form-control" 
+                       id="company" type="text" placeholder="Search companies" 
+                       required="required" data-validation-required-message="Please search companies."
+                       
+                       (keyup)="onKey($event)">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br/>            
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row" [hidden]="this.noResults == true">
+      <div class="col" *ngFor="let company of this.companies" style="padding: 20px">
+        <mat-card (click)="addToList(company)">
+          <mat-card-title style="padding: 5px">{{company.name}}</mat-card-title>
+          <img src={{company.logo}} alt="">
+        </mat-card>
+      </div>
+    </div>
+    <div class="row" [hidden]="this.noResults == false">
+      <div class="col">
+        <h4>No results found</h4>
+        <button mat-button class="custom-button" (click)="addCustom()" center-align>Add custom</button>
+      </div>
+    </div>
+  </header>
+
+  
+
+  <!-- Companies Grid Section -->
+  <section class="myCompanies" id="myCompanies">
+    <div class="container">
+      <h2 class="text-center text-secondary mb-0">My Companies</h2>
+      <br/>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto">
+          <div class="col" align-items-center>
+            <!-- <i>You've selected {{ this.myCompanies }} companies.</i> -->
+            <i class="text-center">{{ this.myCompanies.length }} companies selected.</i>
+            <mat-list>
+              <mat-list-item *ngFor="let m of this.myCompanies">
+                <img matListAvatar src={{m.logo}} alt="...">
+                <h3 matLine> {{m.name}} </h3>
+                <p matLine style="padding: 10px">
+                  <span class="demo-2"> -- {{m.domain}} </span>
+                </p>
+                <button mat-button (click)="deleteCompany(m)" center-align>Delete</button>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</body>
